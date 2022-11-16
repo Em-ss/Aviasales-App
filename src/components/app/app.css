@@ -1,0 +1,12 @@
+body {
+    background: #E5E5E5
+}
+
+
+.container {
+    display: flex;
+    width: 960px;
+    height: 1360px;
+    margin-left: auto;
+    /* padding: auto; */
+}
