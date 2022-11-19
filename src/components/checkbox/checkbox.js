@@ -16,6 +16,7 @@ const CheckBox = ({
   actionHandleCheckboxOne,
   actionHandleCheckboxTwo,
   actionHandleCheckboxThree,
+  tickets,
 }) => {
   let check1,
     check2,
@@ -50,11 +51,12 @@ const CheckBox = ({
           id="1"
           checked={check1}
           onClick={() => {
+            let value = checkBoxAll ? false : true;
             actionHandleCheckboxAll(!checkBoxAll);
-            actionHandleCheckboxNull(checkBoxAll ? false : true);
-            actionHandleCheckboxOne(checkBoxAll ? false : true);
-            actionHandleCheckboxTwo(checkBoxAll ? false : true);
-            actionHandleCheckboxThree(checkBoxAll ? false : true);
+            actionHandleCheckboxNull(value, tickets);
+            actionHandleCheckboxOne(value, tickets);
+            actionHandleCheckboxTwo(value, tickets);
+            actionHandleCheckboxThree(value, tickets);
           }}
         />
         <label htmlFor="1">Все</label>
@@ -65,7 +67,7 @@ const CheckBox = ({
           id="2"
           checked={check2}
           onClick={() => {
-            actionHandleCheckboxNull(!checkBoxNull);
+            actionHandleCheckboxNull(!checkBoxNull, tickets);
             actionHandleCheckboxAll(false);
           }}
         />
@@ -77,7 +79,7 @@ const CheckBox = ({
           id="3"
           checked={check3}
           onClick={() => {
-            actionHandleCheckboxOne(!checkBoxOne);
+            actionHandleCheckboxOne(!checkBoxOne, tickets);
             actionHandleCheckboxAll(false);
           }}
         />
@@ -89,7 +91,7 @@ const CheckBox = ({
           id="4"
           checked={check4}
           onClick={() => {
-            actionHandleCheckboxTwo(!checkBoxTwo);
+            actionHandleCheckboxTwo(!checkBoxTwo, tickets);
             actionHandleCheckboxAll(false);
           }}
         />
@@ -101,7 +103,7 @@ const CheckBox = ({
           id="5"
           checked={check5}
           onClick={() => {
-            actionHandleCheckboxThree(!checkBoxThree);
+            actionHandleCheckboxThree(!checkBoxThree, tickets);
             actionHandleCheckboxAll(false);
           }}
         />
@@ -118,6 +120,7 @@ const mapStateToProps = (state) => {
     checkBoxOne: state.checkBoxOne,
     checkBoxTwo: state.checkBoxTwo,
     checkBoxThree: state.checkBoxThree,
+    tickets: state.tickets['tickets'],
   };
 };
 
