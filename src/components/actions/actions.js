@@ -1,8 +1,9 @@
 export const actionHandleCheckboxAll = (checked) => ({ type: 'CHB_All', payload: checked });
 
 export const moreTickets = () => ({ type: 'MORE', payload: 5 });
-export const up = (checked) => ({ type: 'UP', payload: checked });
+
 export const sortBottom = (checked) => ({ type: 'SORT_BOTTOM', payload: checked });
+export const sortFast = (checked) => ({ type: 'SORT_FAST', payload: checked });
 
 export const actionHandleCheckboxOne = (checked, state) => {
   return async (dispatch) => {
@@ -79,14 +80,33 @@ export const actionHandleCheckboxNull = (checked, state) => {
 
 export const actionGetSearchId = () => {
   return async (dispatch) => {
-    const response = await fetch('https://front-test.dev.aviasales.ru/search');
-    const jsonData = await response.json();
-    const responseTickets = await fetch(`https://front-test.dev.aviasales.ru/tickets?searchId=${jsonData.searchId}`);
-    const Tickets = await responseTickets.json();
-
-    dispatch({
-      type: 'LOAD_SEARCHID',
-      payload: Tickets,
-    });
+    await fetch('https://front-test.dev.aviasales.ru/search')
+      .then((data) => {
+        return data.json();
+      })
+      .then((value) => {
+        const searchTickets = () => {
+          fetch(`https://front-test.dev.aviasales.ru/tickets?searchId=${value.searchId}`)
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error('Vse ploxo');
+              }
+              return response.json();
+            })
+            .then((dat) => {
+              if (!dat.stop) {
+                console.log(dat);
+                searchTickets();
+              }
+              console.log(dat);
+              dispatch({
+                type: 'LOAD_SEARCHID',
+                payload: dat,
+                loading: true,
+              });
+            });
+        };
+        searchTickets();
+      });
   };
 };

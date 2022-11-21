@@ -14,14 +14,12 @@ const defaultState = {
   filterNull: [],
   more: 5,
   id: '',
-  up: true,
   sortBottomTickets: false,
-  // loadTickets: '',
+  sortFastTickets: false,
+  loading: false,
 };
 
 const reducer = (state = defaultState, action) => {
-  // console.log(state.tickets);
-
   switch (action.type) {
     case 'CHB_All':
       return { ...state, checkBoxAll: action.payload };
@@ -34,13 +32,13 @@ const reducer = (state = defaultState, action) => {
     case 'CHB3':
       return { ...state, checkBoxThree: action.payload, filterThree: action.payload1 };
     case 'LOAD_SEARCHID':
-      return { ...state, tickets: action.payload };
+      return { ...state, tickets: action.payload, loading: action.loading };
     case 'MORE':
       return { ...state, more: state.more + action.payload, id: action.id };
-    case 'UP':
-      return { ...state, up: action.payload };
     case 'SORT_BOTTOM':
       return { ...state, sortBottomTickets: action.payload };
+    case 'SORT_FAST':
+      return { ...state, sortFastTickets: action.payload };
 
     default:
       return state;
@@ -50,5 +48,5 @@ const reducer = (state = defaultState, action) => {
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(reduxThunk)));
-// console.log(store.getState());
+
 export default store;

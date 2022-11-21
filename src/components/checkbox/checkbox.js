@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Checkbox } from 'antd';
 
 import * as actions from '../actions/actions.js';
 
@@ -45,10 +46,9 @@ const CheckBox = ({
   return (
     <div className="checkbox">
       <span className="checkbox-title">КОЛИЧЕСТВО ПЕРЕСАДОК</span>
-      <div>
-        <input
-          type="checkbox"
-          id="1"
+
+      <div className="input">
+        <Checkbox
           checked={check1}
           onClick={() => {
             let value = checkBoxAll ? false : true;
@@ -58,56 +58,54 @@ const CheckBox = ({
             actionHandleCheckboxTwo(value, tickets);
             actionHandleCheckboxThree(value, tickets);
           }}
-        />
-        <label htmlFor="1">Все</label>
+        >
+          <span className="gtr">Все</span>
+        </Checkbox>
       </div>
-      <div>
-        <input
-          type="checkbox"
-          id="2"
+
+      <div className="input">
+        <Checkbox
           checked={check2}
           onClick={() => {
             actionHandleCheckboxNull(!checkBoxNull, tickets);
             actionHandleCheckboxAll(false);
           }}
-        />
-        <label htmlFor="2">Без пересадок</label>
+        >
+          Без пересадок
+        </Checkbox>
       </div>
-      <div>
-        <input
-          type="checkbox"
-          id="3"
+      <div className="input">
+        <Checkbox
           checked={check3}
           onClick={() => {
             actionHandleCheckboxOne(!checkBoxOne, tickets);
             actionHandleCheckboxAll(false);
           }}
-        />
-        <label htmlFor="3">1 пересадка</label>
+        >
+          1 пересадка
+        </Checkbox>
       </div>
-      <div>
-        <input
-          type="checkbox"
-          id="4"
+      <div className="input">
+        <Checkbox
           checked={check4}
           onClick={() => {
             actionHandleCheckboxTwo(!checkBoxTwo, tickets);
             actionHandleCheckboxAll(false);
           }}
-        />
-        <label htmlFor="4">2 пересадки</label>
+        >
+          2 пересадки
+        </Checkbox>
       </div>
-      <div>
-        <input
-          type="checkbox"
-          id="5"
+      <div className="input">
+        <Checkbox
           checked={check5}
           onClick={() => {
             actionHandleCheckboxThree(!checkBoxThree, tickets);
             actionHandleCheckboxAll(false);
           }}
-        />
-        <label htmlFor="5">3 пересадки</label>
+        >
+          3 пересадки
+        </Checkbox>
       </div>
     </div>
   );

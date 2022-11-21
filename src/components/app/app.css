@@ -5,8 +5,24 @@ body {
 
 .container {
     display: flex;
-    width: 960px;
+    width: 760px;
     height: 1360px;
     margin-left: auto;
+    margin-right: auto;
     /* padding: auto; */
+}
+
+.container-img {
+    
+    height: 50px;
+    
+    width: 760px;
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container-img img {
+    margin-left:380px;
+    margin-top:10px;
 }

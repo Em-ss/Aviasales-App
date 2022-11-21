@@ -1,11 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+import { Spin } from 'antd';
 
+import './ticket-list.css';
 import * as actions from '../actions/actions.js';
 import Ticket from '../ticket/ticket';
 
 const TicketList = ({
-  tickets = [],
+  loading,
   more,
   moreTickets,
   checkBoxOne,
@@ -17,55 +20,33 @@ const TicketList = ({
   checkBoxTwo,
   checkBoxNull,
   sortBottomTickets,
-  up,
-  upF,
+  sortFastTickets,
 }) => {
-  // console.log(items);
-  // let sort = Object.assign([], filterOne);
-  // if (sortBottomTickets) {
-  //   // console.log('asd');
-
-  //   filterOne = sort.sort(function (a, b) {
-  //     return a['price'] - b['price'];
-  //   });
-  // }
-
-  // let filterAll;
-  // if (sortBottomTickets) {
-  //   filterAll = value.sort(function (a, b) {
-  //     return a['price'] - b['price'];
-  //   });
-  // }
-
-  // if (id < more) {
-  //   return <Ticket item={item} />;
-  // }
-
   let elements1 = filterOne.map((item, id) => {
     if (checkBoxOne) {
       if (id < more) {
-        return <Ticket item={item} />;
+        return <Ticket key={uuidv4()} item={item} />;
       }
     }
   });
   let elements2 = filterTwo.map((item, id) => {
     if (checkBoxTwo) {
       if (id < more) {
-        return <Ticket item={item} />;
+        return <Ticket key={uuidv4()} item={item} />;
       }
     }
   });
   let elements3 = filterThree.map((item, id) => {
     if (checkBoxThree) {
       if (id < more) {
-        return <Ticket item={item} />;
+        return <Ticket key={uuidv4()} item={item} />;
       }
     }
   });
   let elements4 = filterNull.map((item, id) => {
     if (checkBoxNull) {
       if (id < more) {
-        return <Ticket item={item} />;
+        return <Ticket key={uuidv4()} item={item} />;
       }
     }
   });
@@ -75,32 +56,54 @@ const TicketList = ({
   if (sortBottomTickets) {
     let value = [...filterOne, ...filterTwo, ...filterThree, ...filterNull];
     let sort = Object.assign([], value);
-    console.log(value);
+
     sort = sort.sort(function (a, b) {
       return a['price'] - b['price'];
     });
 
     elementsFull = sort.map((item, id) => {
       if (id < more) {
-        return <Ticket item={item} />;
+        return <Ticket key={uuidv4()} item={item} />;
+      }
+    });
+  }
+  if (sortFastTickets) {
+    console.log(sortFastTickets);
+    let value = [...filterOne, ...filterTwo, ...filterThree, ...filterNull];
+    let sort = Object.assign([], value);
+    console.log(value);
+    sort = sort.sort(function (a, b) {
+      return a['segments'][0]['duration'] - b['segments'][0]['duration'];
+    });
+
+    elementsFull = sort.map((item, id) => {
+      if (id < more) {
+        return <Ticket key={uuidv4()} item={item} />;
       }
     });
   }
 
-  // console.log(filterOne);
-
-  // let sort = Object.assign([], elementsFull);
-  // let sort = [...elementsFull];
-
   let btn =
     elements1[0] || elements2[0] || elements3[0] || elements4[0] ? (
-      <button onClick={moreTickets}>Показать еще 5 билетов!</button>
+      <button className="btn-more" onClick={moreTickets}>
+        Показать еще 5 билетов!
+      </button>
     ) : (
-      <div className="re">Рейсов, подходящих под заданные фильтры, не найдено</div>
+      <div className="default">
+        <span>Рейсов, подходящих под заданные фильтры, не найдено</span>
+      </div>
     );
   return (
     <>
-      <div>{elementsFull}</div>
+      <div>
+        {loading ? (
+          elementsFull
+        ) : (
+          <div className="example">
+            <Spin />
+          </div>
+        )}
+      </div>
       {btn}
     </>
   );
@@ -119,8 +122,9 @@ const mapStateToProps = (state) => {
     checkBoxOne: state.checkBoxOne,
     checkBoxTwo: state.checkBoxTwo,
     checkBoxThree: state.checkBoxThree,
-    upF: state.up,
     sortBottomTickets: state.sortBottomTickets,
+    sortFastTickets: state.sortFastTickets,
+    loading: state.loading,
   };
 };
 export default connect(mapStateToProps, actions)(TicketList);

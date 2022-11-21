@@ -6,7 +6,7 @@ background-color:white;
 display: flex;
 flex-direction: column;
 box-shadow: 0 0 10px rgba(0,0,0,0.5);;
-
+margin-bottom: 20px;
 }
 
 .row-1,.row-2,.row-3 {
@@ -62,4 +62,11 @@ line-height: 21px;
 align-items: center;
 
 color: #4A4A4A;
+}
+
+.ticket-img {
+    margin-left:180px;
+}
+.ticket-img img{
+    margin-top:15px;
 }

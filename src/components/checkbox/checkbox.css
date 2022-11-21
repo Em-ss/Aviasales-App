@@ -5,23 +5,41 @@
    box-shadow: 0 0 10px rgba(0,0,0,0.5);;
 }
 
-.checkbox input {
+ .checkbox .input {
+    margin:5px;
+    padding-left:20px;
+    display: inline-block;
+    height: 25px;
+    width: 212px;
+} 
+.ant-checkbox-wrapper {
     margin:10px;
     margin-left:20px;
     display: inline-block;
+    height: 15px;
 }
 
-.checkbox div:hover {
+.checkbox .input:hover {
     background-color:rgba(241, 252, 255, 1);
     cursor: pointer;
 }
+/* .checkbox span:hover {
+    background-color:rgba(241, 252, 255, 1);
+    cursor: pointer;
+} */
 
-.checkbox span {
+/* .checkbox span {
     display: inline-block;
     margin:10px;
     margin-left:20px;
     margin-top:20px;
-}
+} */
+/* .gtr {
+    display: inline-block;
+    margin:10px;
+    margin-left:20px;
+    margin-top:20px;
+} */
 
 .checkbox-title {
  
@@ -35,4 +53,12 @@ letter-spacing: 0.5px;
 text-transform: uppercase;
 
 color: #4A4A4A;
-}
+ margin-left: 25px;
+ margin-bottom: 15px; 
+ margin-top: 20px; 
+ /* margin:5px; */
+ /* padding-left:20px; */
+ display: inline-block;
+ height: 25px;
+ width: 212px;
+} 

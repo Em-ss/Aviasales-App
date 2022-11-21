@@ -1,25 +1,29 @@
-.btn {
-    width: 168px;
+.default {
+    margin-left:20px;
+    width: 502px;
     height: 50px;
-   
-   border-radius: 5px;
-   border:1px solid rgba(223, 229, 236, 1);
-   background-color:rgba(255, 255, 255, 1);
-   cursor: pointer;
-  
-font-family: 'Open Sans';
+background-color:white;
+display: flex;
+flex-direction: column;
+box-shadow: 0 0 10px rgba(0,0,0,0.5);;
+text-align: center;
+}
+
+.default span {
+    font-family: 'Open Sans';
 font-style: normal;
 font-weight: 600;
 font-size: 12px;
-line-height: 20px;
-align-items: center;
-text-align: center;
+line-height: 12px;
+align-items: flex-end;
 letter-spacing: 0.5px;
 text-transform: uppercase;
 
 color: #4A4A4A;
+margin-top:20px;
 }
-.active {
+
+.btn-more {
     background: #2196F3;
     color:white;
     border:none;
@@ -40,10 +44,13 @@ align-items: center;
 text-align: center;
 letter-spacing: 0.5px;
 text-transform: uppercase;
+width: 502px;
+margin-left:20px;
 }
 
-.filter {
+.example {
+    width: 168px;
+    height: 50px;
     margin-left:20px;
-    margin-bottom: 20px;
-    // box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    padding-left: 251px;
 }

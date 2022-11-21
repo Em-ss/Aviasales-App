@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { actionGetSearchId } from '../actions/actions.js';
-import { AppContext } from '../context-app/context-app';
 import CheckBox from '../checkbox/checkbox';
 import Filter from '../filter/filter';
 import TicketList from '../ticket-list/ticket-list';
@@ -15,22 +14,22 @@ class App extends Component {
     super();
   }
   componentDidMount() {
-    // dispatch(actionGetSearchId());
     this.props.tickets();
   }
-  // componentDidUpdate() {
-  //   // this.props.tickets();
-  // }
+
   render() {
     return (
-      <AppContext.Provider value={''}>
+      <>
+        <div className="container-img">
+          <img src="/src/img/air.PNG" />
+        </div>
         <div className="container">
           <CheckBox></CheckBox>
           <Filter>
             <TicketList />
           </Filter>
         </div>
-      </AppContext.Provider>
+      </>
     );
   }
 }
@@ -44,7 +43,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     tickets: () => dispatch(actionGetSearchId()),
-    // tickets: () => dispatch(getTickets(this.props.loadId)),
   };
 };
 

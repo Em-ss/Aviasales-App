@@ -1,4 +1,3 @@
-// import { id } from 'date-fns/locale';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import addMinutes from 'date-fns/addMinutes';
@@ -19,7 +18,6 @@ class Ticket extends Component {
 
     let duration = new Date(item.segments[0].duration * 3600);
     let durationR = new Date(item.segments[1].duration * 3600);
-    // console.log(item.segments[0].stops.length);
 
     if (item.segments[0].stops.length < 2 && item.segments[0].stops.length > 0) {
       transfer = '1 ПЕРЕСАДКА';
@@ -40,12 +38,14 @@ class Ticket extends Component {
     if (item.segments[1].stops.length > 2) {
       transferR = '3 ПЕРЕСАДКИ';
     }
-
+    let img = `https://pics.avs.io/99/36/${item.carrier}.png`;
     return (
       <div className="ticket">
         <div className="row-1">
           <div className="row-box price">{item.price} Р</div>
-          <div></div>
+          <div className="ticket-img">
+            <img src={img} />
+          </div>
         </div>
         <div className="row-2">
           <div className="row-box">
@@ -63,7 +63,7 @@ class Ticket extends Component {
             </span>
           </div>
           <div className="row-box">
-            <span className="title">{transfer}</span>
+            <span className="title">{transferR}</span>
             <span className="data">{item.segments[1].stops.join()}</span>
           </div>
         </div>
@@ -83,7 +83,7 @@ class Ticket extends Component {
             </span>
           </div>
           <div className="row-box">
-            <span className="title">{transferR}</span>
+            <span className="title">{transfer}</span>
             <span className="data">{item.segments[0].stops.join()}</span>
           </div>
         </div>
@@ -91,9 +91,7 @@ class Ticket extends Component {
     );
   }
 }
-const mapStateToProps = (state) => {
-  return {
-    // price1: state.tickets['tickets'][state.id]['price'],
-  };
+const mapStateToProps = () => {
+  return {};
 };
 export default connect(mapStateToProps, actions)(Ticket);
