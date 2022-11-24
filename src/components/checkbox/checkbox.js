@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Checkbox } from 'antd';
 
-import * as actions from '../actions/actions.js';
+import * as actions from '../../actions/actions';
 
 import './checkbox.css';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import * as actions from '../actions/actions.js';
+import * as actions from '../../actions/actions';
 
 import classes from './filter.module.scss';
 const Filter = ({ sortBottom, sortBottomTickets, children, sortFast, sortFastTickets }) => {

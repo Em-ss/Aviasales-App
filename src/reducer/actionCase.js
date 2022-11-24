@@ -1,0 +1,9 @@
+export const CHB_All = 'CHB_All';
+export const CHB_N = 'CHB_N';
+export const CHB1 = 'CHB1';
+export const CHB2 = 'CHB2';
+export const CHB3 = 'CHB3';
+export const LOAD_SEARCHID = 'LOAD_SEARCHID';
+export const MORE = 'MORE';
+export const SORT_BOTTOM = 'SORT_BOTTOM';
+export const SORT_FAST = 'SORT_FAST';

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import addMinutes from 'date-fns/addMinutes';
 
-import * as actions from '../actions/actions.js';
+import * as actions from '../../actions/actions';
 import './ticket.css';
 
 class Ticket extends Component {

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { actionGetSearchId } from '../actions/actions.js';
 import CheckBox from '../checkbox/checkbox';
 import Filter from '../filter/filter';
 import TicketList from '../ticket-list/ticket-list';
+import { actionGetSearchId } from '../../actions/actions';
 
 import 'antd/dist/antd.css';
 import './app.css';
@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <>
         <div className="container-img">
-          <img src="/src/img/air.PNG" />
+          <img src="../../img/Logo.png" />
         </div>
         <div className="container">
           <CheckBox></CheckBox>

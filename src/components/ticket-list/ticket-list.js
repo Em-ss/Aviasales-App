@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Spin } from 'antd';
 
 import './ticket-list.css';
-import * as actions from '../actions/actions.js';
+import * as actions from '../../actions/actions';
 import Ticket from '../ticket/ticket';
 
 const TicketList = ({
